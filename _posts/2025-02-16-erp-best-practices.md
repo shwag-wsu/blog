@@ -129,6 +129,7 @@ Ensuring ERP security and regulatory compliance (e.g., SOX, HIPAA, GDPR) require
     - Restrict developer and tester access to production data.
     - Use Azure Private Link / VNETs to isolate production workloads.
     - Enable just-in-time (JIT) access for privileged accounts.
+
 #### Secure Data Handling in Lower Environments
 - Do not use real production data in non-production environments.
 - Mask or anonymize sensitive data for testing.
