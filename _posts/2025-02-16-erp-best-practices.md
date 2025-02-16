@@ -129,6 +129,14 @@ Ensuring ERP security and regulatory compliance (e.g., SOX, HIPAA, GDPR) require
     - Restrict developer and tester access to production data.
     - Use Azure Private Link / VNETs to isolate production workloads.
     - Enable just-in-time (JIT) access for privileged accounts.
+- Environment Management & Release Cycle Management:
+    - Implement version-controlled releases using CI/CD pipelines (Azure DevOps, GitHub Actions, Jenkins).
+    - Maintain strict governance over deployments, ensuring that all changes go through:
+        - DEV → TEST → STG → PROD release pipeline.
+        - Automated security, functional, and regression testing before promotion.
+    - Use feature flags to enable controlled rollouts and rollback mechanisms.
+    - Enforce change approval processes and deployment freeze periods to reduce production risks.
+    - Monitor environment drift and enforce consistency using Infrastructure as Code (IaC) (Terraform, ARM templates, or Ansible).
 
 #### Secure Data Handling in Lower Environments
 - Do not use real production data in non-production environments.
@@ -145,7 +153,15 @@ Ensuring ERP security and regulatory compliance (e.g., SOX, HIPAA, GDPR) require
 - Implement an incident response plan and conduct regular security drills.
 
 
+### 6) Continuous Security Testing
 
-Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu.
+#### Vulnerability Scanning & Penetration Testing:
+    - Perform regular pentesting to uncover security weaknesses.
+    - Use SAST/DAST tools (e.g., SonarQube, Checkmarx) to scan for vulnerabilities.
 
-Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.
+#### Threat Modeling:
+    - Identify potential attack vectors against ERP and mitigate them proactively.
+    - Use Microsoft Threat Modeling Tool to analyze risks.
+
+#### Red Team & Blue Team Testing:
+    - Simulate real-world attacks against ERP to harden defenses.
