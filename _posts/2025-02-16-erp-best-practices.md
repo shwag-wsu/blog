@@ -156,12 +156,12 @@ Ensuring ERP security and regulatory compliance (e.g., SOX, HIPAA, GDPR) require
 ### 6) Continuous Security Testing
 
 #### Vulnerability Scanning & Penetration Testing:
-    - Perform regular pentesting to uncover security weaknesses.
-    - Use SAST/DAST tools (e.g., SonarQube, Checkmarx) to scan for vulnerabilities.
+- Perform regular pentesting to uncover security weaknesses.
+- Use SAST/DAST tools (e.g., SonarQube, Checkmarx) to scan for vulnerabilities.
 
 #### Threat Modeling:
-    - Identify potential attack vectors against ERP and mitigate them proactively.
-    - Use Microsoft Threat Modeling Tool to analyze risks.
+- Identify potential attack vectors against ERP and mitigate them proactively.
+- Use Microsoft Threat Modeling Tool to analyze risks.
 
 #### Red Team & Blue Team Testing:
-    - Simulate real-world attacks against ERP to harden defenses.
+- Simulate real-world attacks against ERP to harden defenses.
