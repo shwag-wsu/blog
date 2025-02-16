@@ -12,7 +12,7 @@ Since ERP systems manage critical business operations, securing them should be a
 You can futher tailor these security recommendations for a specific ERP platform (e.g., SAP, Oracle, Microsoft Dynamics, Workday) but these the highlevel once I typically like to follow.
 
 
-### Identity & Access Management (IAM)
+### 1) Identity & Access Management (IAM)
 
 #### Role-Based Access Control (RBAC):
 
@@ -22,39 +22,70 @@ You can futher tailor these security recommendations for a specific ERP platform
 
 #### Multi-Factor Authentication (MFA):
 
-Enforce MFA for all users, especially admin and privileged accounts.
-Use Azure AD Conditional Access for additional security layers.
+- Enforce MFA for all users, especially admin and privileged accounts.
+- Use Azure AD Conditional Access for additional security layers.
 
 #### Single Sign-On (SSO):
 
-Integrate SSO using Azure AD, Okta, or another identity provider.
-Reduces credential sprawl and improves user experience.
+- Integrate SSO using Azure AD, Okta,Ping or another identity provider.
+- Reduces credential sprawl and improves user experience.
+- Ensure you can use mutliple standard protocals OpenId Connect and SAML
 
 #### Privileged Account Management (PAM):
 
-Use Just-in-Time (JIT) access for admin accounts.
-Monitor and log all privileged account actions.
+- Use Just-in-Time (JIT) access for admin accounts.
+- Monitor and log all privileged account actions.
 
 
 
-### Data Security & Encryption
+### 2) Data Security & Encryption
 
 #### Encryption at Rest & In Transit:
 
-Use AES-256 encryption for database storage.
-Enforce TLS 1.2+ for all communications between services.
-Ensure ERP backups are encrypted and stored securely.
-Ensure any files used in integrations are also encrypted at rest
+- Use AES-256 encryption for database storage.
+- Enforce TLS 1.2+ for all communications between services.
+- Ensure ERP backups are encrypted and stored securely.
+- Ensure any files used in integrations are also encrypted at rest
 
 #### Data Masking & Tokenization:
 
-Use data masking for sensitive data (PII, PHI, financial info).
-Tokenization can help protect sensitive customer and financial data.
+- Use data masking for sensitive data (PII, PHI, financial info).
+- Tokenization can help protect sensitive customer and financial data.
+
 #### Database Security:
 
-Implement row-level security (RLS) and column-level security (CLS).
-Restrict direct database access to only authorized applications/services.
-Regular database vulnerability scans and security patches.
+- Implement row-level security (RLS) and column-level security (CLS).
+- Restrict direct database access to only authorized applications/services.
+- Regular database vulnerability scans and security patches.
+
+### 3) Secure Application Development
+
+#### Zero Trust Security Model:
+
+- Assume no implicit trust for any request.
+- Use identity verification + continuous monitoring for all access.
+
+#### Secure API Design:
+
+- Use OAuth 2.0, OpenID Connect (OIDC), or SAML for authentication.
+- Ensure API Gateway rate limiting to prevent abuse.
+- Regularly scan APIs for vulnerabilities (e.g., OWASP API Top 10 threats).
+
+#### Input Validation & Protection Against OWASP Top 10:
+
+- Implement SQL injection protection via ORM and parameterized queries.
+- Use Content Security Policy (CSP) to prevent XSS attacks.
+- Validate user input and sanitize all data before processing.
+
+#### Logging & Monitoring:
+
+- Enable Azure Monitor, Microsoft Defender for Cloud, or SIEM tools.
+- Implement audit logs for all user actions within the ERP.
+- Set up real-time alerts for security events (e.g., unauthorized access attempts).
+
+
+
+
 
 Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu.
 
