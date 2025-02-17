@@ -82,11 +82,34 @@ class AllInOnePrinter extends Printer, Scanner, FaxMachine {
 {% endhighlight %}
 
 #### Open-Closed Principle (OCP)
-https://www.designgurus.io/blog/essential-software-design-principles-you-should-know-before-the-interview
+The Open-Closed Principle states that software entities (classes, modules, functions, etc.) should be open for extension but closed for modification. In other words, you should be able to add new functionality to a class without modifying its existing code, by extending it or using other mechanisms like composition.
+
+##### Example:
+{% highlight c# %}
+{% endhighlight %}
+
 #### Liskov Substitution Principle (LSP)
+The Liskov Substitution Principle states that objects of a derived class should be able to replace objects of the base class without affecting the program's correctness. In other words, derived classes should adhere to the behavior and contracts defined by the base class.
+
+##### Example:
+{% highlight c# %}
+{% endhighlight %}
+
+
 #### Interface Segregation Principle (ISP)
+The Interface Segregation Principle states that clients should not be forced to depend on interfaces they do not use. In other words, large interfaces should be split into smaller, more specific ones so that a class implementing the interface only needs to focus on methods that are relevant to its functionality.
+
+##### Example:
+{% highlight c# %}
+{% endhighlight %}
+
+
 #### Dependency Inversion Principle (DIP)
 
 ### Pricipals of DRY
+
+### Pricipals of KISS
+
+### Pricipals of KISS
 
 
