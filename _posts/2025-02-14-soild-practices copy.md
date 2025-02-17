@@ -22,9 +22,25 @@ SOLID principles are the design principles that enable us to manage several soft
 #### Single Responsibility Principle (SRP)
 The Single Responsibility Principle states that a class should have only one reason to change, meaning it should have just one responsibility. In other words, each class should focus on a single task or concern to make the code more maintainable and understandable.
 
+##### Example:
+ <pre>
+     // Not the best design - too many unrelated methods in a single interface
+class AllInOneDevice {
+  print() {
+    // Print implementation
+  }
 
+  scan() {
+    // Scan implementation
+  }
 
+  fax() {
+    // Fax implementation
+  }
+}
+<pre>
 #### Open-Closed Principle (OCP)
+https://www.designgurus.io/blog/essential-software-design-principles-you-should-know-before-the-interview
 #### Liskov Substitution Principle (LSP)
 #### Interface Segregation Principle (ISP)
 #### Dependency Inversion Principle (DIP)
