@@ -10,8 +10,10 @@ meta: "Development"
 Here is a collection of my favorite object-oriented programming principles. While there are many, these are the ones I rely on the most.
 
 
-### Principles of SOILD
+### Principles of SOLID
 SOLID principles are the design principles that enable us to manage several software design problems. Robert C. Martin compiled these principles in the 1990s. These principles provide us with ways to move from tightly coupled code and little encapsulation to the desired results of loosely coupled and encapsulated real business needs properly. SOLID is an acronym for the following.
+
+[designgurus](https://www.designgurus.io/blog/essential-software-design-principles-you-should-know-before-the-interview)
 
 - S: Single Responsibility Principle (SRP)
 - O: Open-closed Principle (OCP)
