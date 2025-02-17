@@ -24,7 +24,7 @@ The Single Responsibility Principle states that a class should have only one rea
 
 ##### Example:
 {% highlight c# %}
-     // Not the best design - too many unrelated methods in a single interface
+// Not the best design - too many unrelated methods in a single interface
 class AllInOneDevice {
   print() {
     // Print implementation
@@ -36,6 +36,45 @@ class AllInOneDevice {
 
   fax() {
     // Fax implementation
+  }
+}
+// A much better design, adhering to the ISP
+class Printer {
+  print() {
+    // Print implementation
+  }
+}
+
+class Scanner {
+  scan() {
+    // Scan implementation
+  }
+}
+
+class FaxMachine {
+  fax() {
+    // Fax implementation
+  }
+}
+
+// Now, a class can implement only the interfaces it needs
+class SimplePrinter extends Printer {
+  print() {
+    // Simple printing implementation
+  }
+}
+
+class AllInOnePrinter extends Printer, Scanner, FaxMachine {
+  print() {
+    // Advanced printing implementation
+  }
+
+  scan() {
+    // Advanced scanning implementation
+  }
+
+  fax() {
+    // Advanced faxing implementation
   }
 }
 {% endhighlight %}
