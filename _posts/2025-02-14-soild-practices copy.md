@@ -1,22 +1,28 @@
 ---
 layout: post
-title: "Development Best Practices C#"
+title: "My Favorite Software Development Principles using C#"
 categories: junk
 author:
 - Scott Harris
-meta: "ERP"
+meta: "Development"
 ---
 
-Since ERP systems manage critical business operations, securing them should be a top priority. By following these security best practices, you can significantly reduce the risk of data breaches, fraud, and unauthorized access while ensuring regulatory compliance.
-
-You can futher tailor these security recommendations for a specific ERP platform (e.g., SAP, Oracle, Microsoft Dynamics, Workday) but these the highlevel once I typically like to follow.
+Here is a collection of my favorite object-oriented programming principles. While there are many, these are the ones I rely on the most.
 
 
+### Principles of SOILD
+SOLID principles are the design principles that enable us to manage several software design problems. Robert C. Martin compiled these principles in the 1990s. These principles provide us with ways to move from tightly coupled code and little encapsulation to the desired results of loosely coupled and encapsulated real business needs properly. SOLID is an acronym for the following.
 
-### Pricipals of SOILD
+- S: Single Responsibility Principle (SRP)
+- O: Open-closed Principle (OCP)
+- L: Liskov substitution Principle (LSP)
+- I: Interface Segregation Principle (ISP)
+- D: Dependency Inversion Principle (DIP)
 
 #### Single Responsibility Principle (SRP)
 The Single Responsibility Principle states that a class should have only one reason to change, meaning it should have just one responsibility. In other words, each class should focus on a single task or concern to make the code more maintainable and understandable.
+
+
 
 #### Open-Closed Principle (OCP)
 #### Liskov Substitution Principle (LSP)
