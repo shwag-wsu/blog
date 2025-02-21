@@ -92,7 +92,7 @@ A collection of commonly asked questions and answers to help users quickly find 
 ### Governance & Compliance
 Governance and compliance documentation ensures that the ERP system adheres to regulatory requirements, industry standards, and internal security policies. These documents help organizations manage risk, maintain audit readiness, and enforce accountability within the ERP ecosystem.(Audit Logs, Security Policies)
 
-#### - ERP Governance Framework
+#### **ERP Governance Framework**
 Defines roles, responsibilities, and decision-making structures for ERP system ownership and management. It includes policies on system updates, data integrity, and compliance oversight.
 
 #### - Access Control & User Management Policies
