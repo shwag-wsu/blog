@@ -19,10 +19,10 @@ Ensures alignment with enterprise-wide IT governance.
 
 ### 2. Architecture Vision – High-Level Planning
 
-#### Business Requirements Document (BRD)
+#### - Business Requirements Document (BRD)
 Captures high-level business needs and objectives, aligning with the Architecture Vision phase.
 
-#### User Requirements Document (URS)
+#### - User Requirements Document (URS)
 Defines key user expectations for the ERP system, influencing early architecture decisions.
 
 ### 3. Business Architecture – Defining Business Processes
