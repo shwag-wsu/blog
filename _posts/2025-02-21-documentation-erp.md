@@ -4,17 +4,18 @@ title: "ERP Documentation Framework"
 categories: misc
 ---
 
-Over the years, I have worked extensively with a wide range of design, technical, and user documents related to ERP systems. Through this experience, I have gained valuable insights into their purpose, structure, and best practices. My goal is to share this knowledge and establish a structured framework that can be used when implementing a new ERP or inheriting an existing one.  Here is my frame work for documenting and ERP.  There are 4 basic categories I would use:
+Over the years, I have worked extensively with a wide range of design, technical, and user documents related to ERP systems. Through this experience, I have gained valuable insights into their purpose, structure, and best practices. My goal is to share this knowledge and establish a structured framework that can be used when implementing a new ERP or inheriting an existing one.  Here is my frame work for documenting and ERP.  There are 5 basic categories or libraries I would use:
 
 
-[Business Documents](### Business Documents)
-### Technical Documents
-### User Documentation
-### Governance & Compliance
+[Business Documents](#business-documents)
+[Technical Documents](#technical-documents)
+[Process Documents](#process-documents)
+[User Documentation](#user-documentation)
+[Governance & Compliance](#governance-&-compliance)
 
 
 
-### Business Documents (Blueprints, Business Requirement Documents)
+### Business Documents 
 Business documentation is essential for defining the objectives, requirements, and scope of an ERP system. These documents serve as the foundation for system design, development, and implementation by capturing key business needs and aligning them with technical solutions.
 
 #### - Business Requirements Document (BRD)
@@ -25,7 +26,7 @@ A more detailed document focusing on specific user needs, functionalities, and s
 
 These documents ensure that ERP implementations meet business goals, comply with industry regulations, and provide a structured approach to system development and deployment.
 
-### 2) Technical Documents (Architecture Diagrams, Integration Specs)
+### Technical Documents 
 Technical documentation provides a blueprint for ERP system design, architecture, and integrations. These documents ensure that the system is scalable, secure, and meets both functional and non-functional requirements.
 
 #### - System Design Specification (SDS)
@@ -45,7 +46,7 @@ A visual representation of data flows, system integrations, and dependencies, he
 
 Technical documents are vital for developers, architects, and IT teams to ensure seamless ERP implementation and maintenance.
 
-### 3) Process Documents (Workflows, SOPs)
+### Process Documents (Workflows, SOPs)
 Process documentation ensures that business workflows within the ERP system are well-defined, standardized, and optimized for efficiency. These documents help organizations maintain consistency in operations and provide clarity for users and stakeholders.
 
 #### - Standard Operating Procedures (SOPs) 
@@ -68,7 +69,7 @@ Documentation tailored to specific user roles, ensuring that employees understan
 
 These documents are essential for process optimization, training, compliance, and ensuring ERP adoption across an organization.
 
-### 4) User Documentation (Training Manuals, FAQs, Troubleshooting)
+### User Documentation
 User documentation is critical for ensuring that end-users, administrators, and support teams can effectively operate and troubleshoot the ERP system. This section provides resources that help users navigate the system, perform tasks efficiently, and resolve common issues.
 
 #### - Training Manuals
@@ -84,8 +85,8 @@ Documentation outlining common ERP errors, their causes, and step-by-step resolu
 A collection of commonly asked questions and answers to help users quickly find solutions to frequent issues.
 
 
-### 5) Governance & Compliance (Audit Logs, Security Policies)
-Governance and compliance documentation ensures that the ERP system adheres to regulatory requirements, industry standards, and internal security policies. These documents help organizations manage risk, maintain audit readiness, and enforce accountability within the ERP ecosystem.
+### Governance & Compliance 
+Governance and compliance documentation ensures that the ERP system adheres to regulatory requirements, industry standards, and internal security policies. These documents help organizations manage risk, maintain audit readiness, and enforce accountability within the ERP ecosystem.(Audit Logs, Security Policies)
 
 #### - ERP Governance Framework
 Defines roles, responsibilities, and decision-making structures for ERP system ownership and management. It includes policies on system updates, data integrity, and compliance oversight.
