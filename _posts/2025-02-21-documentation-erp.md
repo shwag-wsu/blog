@@ -8,9 +8,13 @@ Over the years, I have worked extensively with a wide range of design, technical
 
 
 [Business Documents](#business-documents)
+
 [Technical Documents](#technical-documents)
+
 [Process Documents](#process-documents)
+
 [User Documentation](#user-documentation)
+
 [Governance & Compliance](#governance-&-compliance)
 
 
@@ -46,7 +50,7 @@ A visual representation of data flows, system integrations, and dependencies, he
 
 Technical documents are vital for developers, architects, and IT teams to ensure seamless ERP implementation and maintenance.
 
-### Process Documents (Workflows, SOPs)
+### Process Documents
 Process documentation ensures that business workflows within the ERP system are well-defined, standardized, and optimized for efficiency. These documents help organizations maintain consistency in operations and provide clarity for users and stakeholders.
 
 #### - Standard Operating Procedures (SOPs) 
@@ -85,7 +89,7 @@ Documentation outlining common ERP errors, their causes, and step-by-step resolu
 A collection of commonly asked questions and answers to help users quickly find solutions to frequent issues.
 
 
-### Governance & Compliance 
+### Governance & Compliance
 Governance and compliance documentation ensures that the ERP system adheres to regulatory requirements, industry standards, and internal security policies. These documents help organizations manage risk, maintain audit readiness, and enforce accountability within the ERP ecosystem.(Audit Logs, Security Policies)
 
 #### - ERP Governance Framework
