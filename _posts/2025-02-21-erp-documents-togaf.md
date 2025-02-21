@@ -13,7 +13,7 @@ For more information on TOGAF visit the
 
 ### 1. Preliminary Phase – Establishing Architecture Capability
 
-#### ERP Governance Framework
+#### [ERP Governance Framework](./misc/2025/02/21/documentation-erp.html#erp-governance-framework)
 Defines roles, responsibilities, and governance models for ERP architecture within the organization.
 Ensures alignment with enterprise-wide IT governance.
 
