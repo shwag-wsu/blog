@@ -13,7 +13,7 @@ For more information on TOGAF visit the
 
 This is how I would map the ERP documents into the TOGAF process.
 
-![togaf](.\togaf_lib.png)
+![togaf](https://shwag-wsu.github.io/blog/togaf_lib.png)
 
 ### Preliminary Phase – Establishing Architecture Capability
 
