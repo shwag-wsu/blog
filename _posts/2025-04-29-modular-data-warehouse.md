@@ -21,7 +21,19 @@ This architecture outlines a flexible, scalable ELT (Extract, Load, Transform) a
 - SaaS: Salesforce, HubSpot
 
 ### 2. Data Ingestion
+Data is ingested into the pipeline using both batch and streaming mechanisms:
 
+<b>Batch Processing:</b> Regular scheduled jobs to pull from sources.
+
+<b>Pub/Sub or Event Streams:</b> For real-time data (e.g., user activity, app logs).
+
+Key Considerations:
+
+Data is validated at ingestion for schema correctness, null values, and basic formatting.
+
+Real-time and batch pipelines can coexist based on latency needs.
+
+<b>Cloud Options</b>
 
 Component             | AWS                   | Azure                    | GCP
 --------------------- | --------------------- | ------------------------ | ---------------------
