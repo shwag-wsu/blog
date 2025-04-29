@@ -39,8 +39,7 @@ Component             | AWS                   | Azure                    | GCP
 --------------------- | --------------------- | ------------------------ | ---------------------
 Batch Process         | AWS Glue              | Azure Data Factory       | Cloud Dataflow
 Pub/Sub               | Amazon Kinesis        | Event Grid / Service Bus | Google Pub/Sub
-lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ipsum dolor sit
-lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ipsum dolor sit
+
 
 ### 3. Data Lake
 Stores raw or lightly processed data in its native format (structured, semi-structured, or unstructured).
@@ -56,6 +55,7 @@ Acts as a staging area before transformation.
 Enables data reprocessing, historical audit, and exploration by data scientists.
 
 #### Cloud Options
+
 Component             | AWS                   | Azure                    | GCP
 --------------------- | --------------------- | ------------------------ | ---------------------
 Storage               | S3                    | Azure Blob               | Google Cloud Storage
@@ -78,8 +78,9 @@ Version-controlled transformations improve governance.
 Allows unit tests and CI/CD for data logic.
 
 #### Tool Options
-Tools             |
-------------------------------------------------------------- |
+
+Tools                                                           |
+-------------------------------------------------------------   |
 dbt,Apache Spark, SQL scripts, or data orchestration frameworks |
 
 ### 5. Data Warehouse (EDW)
@@ -97,7 +98,54 @@ Ad hoc reporting and advanced analytics
 
 Ensures data consistency and performance
 
+#### Tool Options
+
 Component             | AWS                   | Azure                    | GCP
 --------------------- | --------------------- | ------------------------ | ---------------------
 Data Warehouse        |  Redshift	          | Synapse	                 | BigQuery
 Vendor-Neutral	      |  Snowflake (multi-cloud)	
+
+
+### 6. Data Model
+
+Modeled using dbt, SQL Views, or Semantic Layers
+
+Stored in the warehouse for BI tools to consume
+
+
+
+### 7. Governance & Compliance
+
+<b>Authentication/Authorization:</b> OAuth2, SAML, role-based access control
+
+<b>Data Quality:</b> Tools like Great Expectations, dbt tests, or custom scripts
+
+<b>Compliance:</b> GDPR, HIPAA, SOX enforced via access logs, audit trails, masking
+
+<b>Purpose:</b>
+
+- Ensures trust and compliance
+- Supports enterprise risk management initiatives
+
+### 8. Visualization & Analytics
+
+Business users, analysts, and data scientists consume the data via BI tools:
+
+<b>Dashboards:</b> Tableau, Power BI, Looker, Metabase
+
+<b>Exploration:</b> SQL Notebooks, Jupyter, Mode Analytics
+
+<b>APIs:</b> For downstream systems or machine learning models
+
+<b>Purpose:</b>
+
+- Unlock business insights
+- Drive data-informed decisions
+
+#### Tools Options
+
+Tools                                                           |
+-------------------------------------------------------------   |
+Tableau, Power BI, Looker, Superset                             |
+
+
