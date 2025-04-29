@@ -22,11 +22,6 @@ This architecture outlines a flexible, scalable ELT (Extract, Load, Transform) a
 
 ### 2. Data Ingestion
 
-Component	AWS	Azure	GCP
-Batch Process	AWS Glue	Azure Data Factory	Cloud Dataflow
-Pub/Sub	Amazon Kinesis	Event Grid / Service Bus	Google Pub/Sub
-
-
 
 Component             | AWS                   | Azure                    | GCP
 --------------------- | --------------------- | ------------------------ | ---------------------
@@ -34,3 +29,10 @@ Batch Process         | AWS Glue              | Azure Data Factory       | Cloud
 Pub/Sub               | Amazon Kinesis        | Event Grid / Service Bus | Google Pub/Sub
 lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ipsum dolor sit
 lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ipsum dolor sit
+
+### 3. Data Lake
+
+Component             | AWS                   | Azure                    | GCP
+--------------------- | --------------------- | ------------------------ | ---------------------
+Storage               | S3                    | Azure Blob               | Google Cloud Storage
+Database              | Snowflake             | Event Grid / Service Bus | Google Pub/Sub
