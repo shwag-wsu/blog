@@ -16,8 +16,8 @@ This architecture outlines a flexible, scalable ELT (Extract, Load, Transform) a
 ### 🔧 Modular Data Warehouse Reference Architecture
 
 ### 1. Sources
-- Internal DBs: MySQL, PostgreSQL
 - File-based: Google Sheets, Excel, CSVs
+- Internal DBs: MySQL, PostgreSQL
 - SaaS: Salesforce, HubSpot
 
 ### 2. Data Ingestion
@@ -65,17 +65,14 @@ Database              | Snowflake             | Event Grid / Service Bus | Googl
 ### 4. Transformation Layer (ELT)
 Transformations happen after loading into the lake or warehouse.
 
-Tools: dbt, Apache Spark, SQL scripts, or data orchestration frameworks.
 
 Logic: Joins, filters, aggregation, and business rule enforcement.
 
 <b>Benefits:</b>
-
-Scales better with cloud-native warehouses.
-
-Version-controlled transformations improve governance.
-
-Allows unit tests and CI/CD for data logic.
+ - Scales better with cloud-native warehouses.
+ - Version-controlled transformations improve governance.
+ - Allows unit tests and CI/CD for data logic.
+ - Data quality layer
 
 #### Tool Options
 
@@ -86,17 +83,11 @@ dbt,Apache Spark, SQL scripts, or data orchestration frameworks |
 ### 5. Data Warehouse (EDW)
 A performant, query-optimized environment where cleansed and transformed data lives.
 
-Cloud Options: Snowflake, BigQuery, Redshift, Synapse
-
-Multi-cloud: Snowflake or Starburst (Trino)
-
 <b>Use Case:</b>
 
-Business Intelligence dashboards
-
-Ad hoc reporting and advanced analytics
-
-Ensures data consistency and performance
+- Business Intelligence dashboards
+- Ad hoc reporting and advanced analytics
+- Ensures data consistency and performance
 
 #### Tool Options
 
@@ -114,7 +105,7 @@ Stored in the warehouse for BI tools to consume
 
 
 
-### 7. Governance & Compliance
+### 7. Security & Governance 
 
 <b>Authentication/Authorization:</b> OAuth2, SAML, role-based access control
 
