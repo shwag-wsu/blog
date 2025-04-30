@@ -4,10 +4,6 @@ title: "Enterprise Integration Design Architecture"
 categories: Enterprise Architecture, Integration Architecure
 ---
 
-
-
-
-#  Enterprise Integration Desing Architecture
 This design outlines a flexible, scalable integration design approach that supports hybrid clouds. This design levelages a hub and spoke design and does not address point to point integrations.
 
 ![enterprise_integration](https://shwag-wsu.github.io/blog/enterprise_integration.png)
