@@ -15,10 +15,42 @@ This design outlines a flexible, scalable integration design approach that suppo
 - Support for hybrid cloud (on-prem + SaaS) integration.
 - Inclusion of Boomi and Workato in orchestration offers flexibility for integration use cases.
 
-## Pub /Sub Messaging
+## API Gateway
+
+## Point to Point (P2P)
+
+### Important Considerations:
+Using Pub / Sub messaging there are some common pitfalls to be aware of they are listed below.
+- Message Ordering
+- Loop Protection
+
+### Message Ordering
+Messages for the subscriber will need to be processed in the order in which they are recieved.  This is to makes sure the correct changes are applied in order this is accomplished by Enable message ordering in the subscription.  Here's a more detailed explanation:
+
+- 1. Enable Message Ordering:
+When creating a subscription, enable the "Message ordering" property. This tells Pub/Sub to enforce ordering for messages associated with the same key. 
+- 2. Use Ordering Keys:
+When publishing messages, include an ordering key. This key will be used to group messages together for ordered delivery. 
+- 3. Publish in the Same Region:
+Messages with the same ordering key must be published in the same region to ensure ordered delivery. 
+- 4. Subscriber Behavior:
+Subscribers will receive messages with the same ordering key in the order they were published, even if there are multiple subscribers to the same topic. 
 
 
-### Pub/Sub Message Standards (Loop Protection)
+#### Considerations:
+- Ordering is not guaranteed across different keys:
+Ordering is only enforced within the same ordering key. Messages with different keys may be delivered out of order. 
+- Published in a different region:
+If you are publishing messages with the same ordering key to different regions, then it's not possible to guarantee the order across those regions. 
+- Exactly-once delivery:
+While message ordering ensures messages with the same key are delivered in order, it's still possible for messages to be delivered more than once, especially with exactly-once delivery enabled. 
+
+By following these steps, you can ensure that your subscribers receive messages in the order they were published, even if multiple subscribers are consuming the same topic. 
+
+### Loop Protection
+
+ loop protection refers to mechanisms to prevent messages from circulating indefinitely within a distributed system, which can lead to duplicate delivery and resource exhaustion. This is particularly important in scenarios involving proxy subscriptions, where messages can propagate through a network of queue managers. Here is a recommended standard message envelope:
+
  {% highlight json %}
  {
   "messageId": "uuid-12345-abc",
@@ -32,21 +64,83 @@ This design outlines a flexible, scalable integration design approach that suppo
 }
 {% endhighlight %}
 
-
-#### Loop Prevention Strategy
+#### Prevention Strategy
 
  - processed_by is an array of systems that have handled the message.
  - Each subscriber checks this field before acting.
  - Systems append their ID to the list if not present.
  - Optionally enforce max hop count or TTL to further prevent endless retries.
 
+- 1. Use Event Metadata to Track Origin
+  Add metadata to each message, such as:
+  sourceSystem: e.g., Salesforce, BillingSystem, Workday
+  eventId or correlationId: for traceability
+  processedBy[]: a list or hash of systems that have touched this message
+
+  How to use it:
+
+  When an event is received, the integration flow checks sourceSystem or processedBy and skips or logs if it already processed it.
+
+  You can drop or flag the message if it’s circular.
+
+📘 In Workato or Boomi, this is usually done with:
+
+Conditional steps (e.g., “Only run if source ≠ 'BillingSystem'”)
+
+Lookup tables or audit logs for recent event IDs
+
+- 2. Idempotency at Destination Systems
+Make sure downstream APIs (like Salesforce, Workday) are idempotent, meaning:
+Repeating the same update doesn’t cause changes or duplicates.
+For example, updating a customer with the same data is a no-op.
+This doesn’t stop the loop, but it reduces the impact if it happens.
+
+- 3. Filtering Logic on Subscriptions
+At the Pub/Sub subscription level, apply filters:
+
+Only subscribe to events relevant to the system (e.g., eventType = OrderStatusUpdate)
+
+Exclude messages originated by the system itself (via metadata)
+
+Some systems like GCP Pub/Sub, Kafka Streams, or AWS EventBridge support native filtering.
+
+- 4. Use Message TTLs or Hop Limits
+Add a TTL (time to live) or max hops count to messages:
+
+After a certain time or number of handoffs, the message is discarded or quarantined.
+
+This prevents zombie loops and makes debugging easier.
+
 ## Message Layer
 ### Purpose
 Facilitates asynchronous communication between systems using a publish/subscribe model.
 
+## Pub /Sub Messaging
+Event-driven, loosely coupled, multi-listener.
+
+
 ### Components
 - **Publisher**: Publishes data events to the message bus.
 - **Subscribers**: Consume relevant messages based on topic or event type.
+
+
+### Important Considerations:
+Using Pub / Sub messaging there are some common pitfalls to be aware of they are listed below.
+- Message Ordering
+- Loop Protection
+
+### Message Ordering
+Messages for the subscriber will need to be processed in the order in which they are recieved.  This is to makes sure the correct changes are applied in order this is accomplished by Enable message ordering in the subscription.  Here's a more detailed explanation:
+
+- 1. Enable Message Ordering:
+When creating a subscription, enable the "Message ordering" property. This tells Pub/Sub to enforce ordering for messages associated with the same key. 
+- 2. Use Ordering Keys:
+When publishing messages, include an ordering key. This key will be used to group messages together for ordered delivery. 
+- 3. Publish in the Same Region:
+Messages with the same ordering key must be published in the same region to ensure ordered delivery. 
+- 4. Subscriber Behavior:
+Subscribers will receive messages with the same ordering key in the order they were published, even if there are multiple subscribers to the same topic. 
+
 
 ### Key Considerations
 - Use unique `messageId` for deduplication and traceability.
@@ -115,3 +209,20 @@ Supports transparency, traceability, and maintainability of integration flows.
 ### Standards
 - Use correlation IDs across logs for traceability.
 - Enforce logging policies for all components.
+
+## 🤖 Boomi vs. Workato in This Design
+
+| Feature                    | **Boomi**                                   | **Workato**                                |
+|---------------------------|----------------------------------------------|--------------------------------------------|
+| **Target Users**           | IT & technical teams                         | Business users & citizen developers        |
+| **Use Cases**              | Complex integrations, ETL, backend workflows | Quick automations, SaaS integrations       |
+| **Customization**          | High (via scripting, components)             | Moderate (drag & drop, limited code)       |
+| **Governance**             | Strong enterprise governance tools           | Improving, more limited in complex orgs    |
+| **Speed of Deployment**    | Medium                                        | Fast                                        |
+| **Integration Templates**  | Available but requires customization         | Rich library, often plug-and-play          |
+| **Best Fit In This Design**| System-to-system or backend orchestration    | SaaS-to-SaaS or user-facing process flows  |
+
+### Summary:
+- <b>Boomi</b> is better suited where deeper control, advanced error handling, or hybrid scenarios are needed.
+- <b>Workato</b> excels in rapid automation and user-friendly design for business-led use cases.
+
