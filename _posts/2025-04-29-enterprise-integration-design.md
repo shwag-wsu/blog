@@ -33,7 +33,7 @@ Event-driven, loosely coupled, multi-listener.
 There are several patterns to use in a pub / sub plaform I prefer the One-to-Many option defined below:
 
 #### One-to-Many
-A single or multiple publisher applications publish messages to a single topic. This single topic is attached to multiple subscriptions. Each subscription is connected to a single subscriber application. Each of the subscriber applications gets the same set of published messages from the topic. When a topic has multiple subscriptions, then every message has to be sent to a subscriber receiving messages on behalf of each subscription. If you need to perform different data operations on the same set of messages, fan out is a good option. You can also attach multiple subscribers to each subscription and get a load-balanced subset of messages for each subscriber.
+A single or multiple publisher applications publish messages to a single topic. This single topic is attached to multiple subscriptions. Each subscription is connected to a single subscriber application. Each of the subscriber applications gets the same set of published messages from the topic. When a topic has multiple subscriptions, then every message has to be sent to a subscriber receiving messages on behalf of each subscription. If you need to perform different data operations on the same set of messages, you can use the consistance layer to get addition information from the source as needed.
 
 ![one_to_many](https://shwag-wsu.github.io/blog/one_to_many.png)
 
@@ -45,13 +45,13 @@ Using Pub / Sub messaging there are some common pitfalls to be aware of they are
 #### Message Ordering
 Messages for the subscriber will need to be processed in the order in which they are recieved.  This is to makes sure the correct changes are applied in order this is accomplished by Enable message ordering in the subscription.  Here's a more detailed explanation:
 
-- 1. Enable Message Ordering:
+- **Enable Message Ordering:**
 When creating a subscription, enable the "Message ordering" property. This tells Pub/Sub to enforce ordering for messages associated with the same key. 
-- 2. Use Ordering Keys:
+- **Use Ordering Keys:**
 When publishing messages, include an ordering key. This key will be used to group messages together for ordered delivery. 
-- 3. Publish in the Same Region:
+- **Publish in the Same Region:**
 Messages with the same ordering key must be published in the same region to ensure ordered delivery. 
-- 4. Subscriber Behavior:
+- **Subscriber Behavior:**
 Subscribers will receive messages with the same ordering key in the order they were published, even if there are multiple subscribers to the same topic. 
 
 ##### Additional Considerations for Ordering:
@@ -71,7 +71,7 @@ By following these steps, you can ensure that your subscribers receive messages 
 #### Prevention Strategy
 To prevent the messages from circulating indefinitely within a distributed system there are a couple different step to implement within the pub/sub platform.
 
-- 1. Use Event Metadata to Track Origin
+- **Use Event Metadata** to Track Origin
   Here is a recommended standard message envelope:
   Add metadata to each message, such as:
   sourceSystem: e.g., Salesforce, BillingSystem, Workday
@@ -92,26 +92,26 @@ To prevent the messages from circulating indefinitely within a distributed syste
   }
 }
 {% endhighlight %}
- <b>How to use it:</b>
+ **How to use it:**
   When an event is received, the integration flow checks sourceSystem or processedBy and skips or logs if it already processed it.
   You can drop or flag the message if it’s circular.
   In Workato or Boomi, this is usually done with:
   Conditional steps (e.g., “Only run if source ≠ 'BillingSystem'”)
   Lookup tables or audit logs for recent event IDs
 
-- 2. Idempotency at Destination Systems
+- **Idempotency at Destination Systems**
 Make sure downstream APIs (like Salesforce, Workday) are idempotent, meaning:
 Repeating the same update doesn’t cause changes or duplicates.
 For example, updating a customer with the same data is a no-op.
 This doesn’t stop the loop, but it reduces the impact if it happens.
 
-- 3. Filtering Logic on Subscriptions
+- **Filtering Logic on Subscriptions**
 At the Pub/Sub subscription level, apply filters:
 Only subscribe to events relevant to the system (e.g., eventType = OrderStatusUpdate)
 Exclude messages originated by the system itself (via metadata)
 Some systems like GCP Pub/Sub, Kafka Streams, or AWS EventBridge support native filtering.
 
-- 4. Use Message TTLs or Hop Limits
+- **Use Message TTLs or Hop Limits**
 Add a TTL (time to live) or max hops count to messages:
 After a certain time or number of handoffs, the message is discarded or quarantined.
 This prevents zombie loops and makes debugging easier.
@@ -136,17 +136,17 @@ Coordinates business workflows and integration processes using automation platfo
 - Design modular flows for reuse.
 - Include fallback and alerting mechanisms.
 
-## Data Consistency Layer
+## Consistency Layer
 
 ### Purpose
-Ensures data consistency across systems via polling or event-driven techniques.
+Ensures data consistency across systems via polling or event-driven techniques.  This can also be used to enhance data in systems.
 
 ### Components
 - **Change Data Capture (CDC)**: Tracks real-time data changes.
-- **Polling**: Periodic checks for data changes in non-event sources.
+- **Polling**: Periodic checks for data changes in non-event sources using APIs etc.
 
 ### Best Practices
-- Prefer CDC for low-latency and efficient change detection.
+- Prefer CDC for low-latency and efficient change detection.  However 
 - Use timestamp or checkpoint-based polling to reduce load.
 
 ## Security and Governance Layer
